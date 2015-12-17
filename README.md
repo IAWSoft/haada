@@ -35,7 +35,3 @@ The ***navigation menu*** will appear on every page as soon as the user is logge
 - Create incidence
 - View existing incidences
 - Log out
-
-1. Hola
-2. Adios
-3. Sonobabitch
