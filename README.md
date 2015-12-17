@@ -26,8 +26,12 @@ The first version of the application must provide the following functionalities:
 
 ### Welcome Screen
 
-The *welcome screen* will be the first page to load. It will have a welcoming message and a form to log into the application. There will also be a link to register as a new user.
+The ***welcome screen*** will be the first page to load. It will have a welcoming message and a form to log into the application. There will also be a link to register as a new user.
 
 ### Navigation Menu
 
-The *navigation menu* will appear on every page, to allow an easy navigation between the different functionalities that we want to provide.
+The ***navigation menu*** will appear on every page as soon as the user is logged in, to allow an easy navigation between the different functionalities that we want to provide. This navigation menu will have the following elements:
+
+- Create incidence
+- View existing incidences
+- Log out
