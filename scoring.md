@@ -7,7 +7,8 @@
     - Task Assegment
     - Implementation
     - Runtime
-        - Effciency
-        - Coding Standards
+    - Standards:
+        1. Efficiency
+        2. Coding Standards
     - Testing
-    -Delivery
+    - Delivery
