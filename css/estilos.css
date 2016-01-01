@@ -1,0 +1,60 @@
+/*HEADER*/
+
+.ajustado
+{
+	padding: 11px;
+	margin-top: -15px
+}
+
+.ConNav
+{
+	margin-left: 0%;
+	width: 95%;
+}
+
+.size
+{
+	width: 30%;
+}
+.size2
+{
+	width: 95%;
+}
+
+footer 
+{
+	background: #F8F8F8;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+}
+
+.centrar
+{
+	margin: 10px;
+}
+
+@media screen and (max-width: 768px){
+.ajustado
+{
+	padding: 11px;
+	margin-top: -15px
+}
+
+.ConNav
+{
+	margin-left: 0%;
+	width: 95%;
+}
+.size
+{
+	width: 95%;
+}
+.size2
+{
+	width: 95%;
+}
+
+}

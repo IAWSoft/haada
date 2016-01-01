@@ -2,28 +2,27 @@
 
 session_start();
 
-$user = mysqli_real_escape_string($cdb, $_POST['user_name']);
-$password = mysqli_real_escape_string($cdb, $_POST['user_Password']);
+$user = $_POST['userName'];
+$password = $_POST['userPassword'];
 $hash = sha1($password); 
 
 include("config.php");
 
-$query_login = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE user_name='".$usuario."' AND user_Password='".$hash."'");		
-
+$query_login = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE userName='".$user."' AND userPassword='".$hash."'");		
 
 if(mysqli_num_rows($query_login) == 1) 
 {
 	$row = mysqli_fetch_assoc($query_login);
 
 	$email = $row['email'];
-	$user = $row['user_name'];
-	$password = $row['user_Password'];
-	$info = $row['informacion'];
-	$permissions = $row['level'];
+	$user = $row['userName'];
+	$password = $row['userPassword'];
+	$info = $row['description'];
+	$permissions = $row['permissionLevel'];
 
 	$_SESSION['email'] = $email;
 	$_SESSION['user'] = $user;
-	$_SESSION['informacion'] = $info;
+	$_SESSION['description'] = $info;
 	$_SESSION['level'] = $permissions;
 
 	header('Location: ../');
@@ -32,8 +31,9 @@ if(mysqli_num_rows($query_login) == 1)
 } 
 else 
 {   
-        echo '<script type="text/javascript">
-        alert("Los datos introducidos son inconrrectos, vuelva a intentarlo.");
+
+      echo '<script type="text/javascript">
+        alert("Incorrect username or password..");
         window.location.href = "javascript:window.history.back();";
         </script>';
 }

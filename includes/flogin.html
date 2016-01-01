@@ -1,0 +1,36 @@
+
+ <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog size">
+	    <div class="modal-content" style="min-width: 250px;">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title text-center" id="myModalLabel">Welcome to Haada</h4>
+	      </div>
+	      <div class="modal-body">
+		     <div class="row center">
+			<section class="posts col-md-12"> 
+				<form action="includes/login.php" method="post" class="form-horizontal"> 
+					<fieldset class="size2">
+					    <div >
+         					<input type="text" class="form-control" placeholder="User name" name="userName" required>
+        				</div>
+        				<br/>
+       				 	<div>
+        				   <input type="password" class="form-control" placeholder="Password" name="userPassword" required>
+        				</div>
+        				<br/>
+        				<p>New to Haada?<a href="register.php"> Create an account.</a></p>
+        				<br/>
+	              		<div class="col-sm-offset-4 col-sm-8">
+			            	<button type="submit"  name="submit" value="Submit" class="btn btn-success">Submit</button>
+	        			</div>
+					</fieldset>
+				</form>
+			</section>	
+				
+				<!-- contact form ends -->	
+					</div>	
+		        </div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	</div><!-- /.modal -->

@@ -3,8 +3,8 @@
 
     - Functional Requirements
     - English
-    - riginality/Difficulty
-    - Task Assegment
+    - Originality/Difficulty
+    - Task Assignment
     - Implementation
     - Runtime
     - Standards:
