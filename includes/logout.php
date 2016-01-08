@@ -1,6 +1,6 @@
 <?php
 
-@session_start();
+session_start();
 
 	$_SESSION = array(); // Clear the variables.
 	session_destroy(); // Destroy the session itself.

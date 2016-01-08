@@ -35,6 +35,17 @@ footer
 {
 	margin: 10px;
 }
+.posi {
+background-color: white;
+overflow: hidden;
+position: absolute;
+height: 320px;
+width: 300px;
+left: 50%;
+top: 45%;
+margin-top: -140px;
+margin-left: -150px;
+}
 
 @media screen and (max-width: 768px){
 .ajustado

@@ -13,11 +13,10 @@
 <body>
   <?php    
     include("includes/header.php");
-    include("includes/fregister.php");
+    include("includes/record_staff.php");
   ?> 
-    
-    
 
+    
   <?php    
     include("includes/flogin.html");
     include("includes/contact.html");

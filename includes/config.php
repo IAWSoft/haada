@@ -8,7 +8,7 @@ $db_password = "";                // Password for db taskmanager
 
 $db_table = "users";       // Name table db
 $db_table1 = "category";
-$db_table2 = "departament";
+$db_table2 = "department";
 $db_table3 = "status"; 
 $db_table4 = "tasks"; 
 

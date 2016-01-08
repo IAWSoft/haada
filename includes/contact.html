@@ -1,0 +1,51 @@
+
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<div class="modal-dialog">
+	    <div class="modal-content" style="min-width: 250px;">
+	      	<div class="modal-header">
+	        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        	<h4 class="modal-title" id="myModalLabel">Contact</h4>
+	      	</div>
+	      	<div class="modal-body">
+		     	<div class="row center">
+					<section class="posts col-md-9"> 
+						<form action="includes/sendmessage.php" method="post" class="form-horizontal"> 
+							<fieldset>
+						    	<div class="form-group">
+						      		<label class="col-sm-4 control-label" for="nombre">Name</label>
+						      		<div class="col-sm-8">
+						        		<input type="text"  placeholder="You name" class="form-control" name="namee" id="name">
+						      		</div>
+						    	</div>
+						    	<div class="form-group">
+						      		<label class="col-sm-4 control-label" for="You Email">Email</label>
+						      		<div class="col-sm-8">
+						        		<input type="text" placeholder="You Email" class="form-control" name="email" id="email">
+						      		</div>
+						    	</div>
+						    	<div class="form-group">
+						      		<label class="col-sm-4 control-label" for="subject">subject</label>
+						      		<div class="col-sm-8">
+						        		<input placeholder="You subject" class="form-control" name="subject" id="subject">
+						      		</div>
+						    	</div>
+						    	<div class="form-group">
+						      		<label class="col-sm-4 control-label" for="message">Message</label>
+						      		<div class="col-sm-8">
+						        		<textarea placeholder="You message" class="form-control" name="message" id="message" rows="3"></textarea>
+						      		</div>
+						    	</div>
+	              				<div class="col-sm-offset-4 col-sm-8">
+			            			<button type="submit"  name="submit" value="submit" class="btn btn-success">Submit</button>
+	    			      			<button type="reset" class="btn btn-primary">Cancel</button>
+	        					</div>
+							</fieldset>
+						</form>
+					</section>	
+				<!-- contact form ends -->	
+				</div>	
+		    </div>
+	    </div>
+	 </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+	 <!-- /Contact -->
