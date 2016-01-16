@@ -5,7 +5,7 @@ $db_name = "taskmanager";         // Database name
 $db_user = "root";                // Database user
 $db_password = "";                // Database user password
 
-// Database table names
+// Database table names:
 $db_table = "users";       
 $db_table1 = "category";
 $db_table2 = "department";

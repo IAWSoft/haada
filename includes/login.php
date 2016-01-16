@@ -42,7 +42,7 @@ else
 {   
 	//Si los datos introducidos no son correctos, lanzamos alert con aviso.
     echo '<script type="text/javascript">
-    alert("Incorrect username or password..");
+    alert("Incorrect username or password.");
         window.location.href = "javascript:window.history.back();";
         </script>';
 }

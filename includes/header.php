@@ -1,7 +1,7 @@
 <header>
 	<?php
 		session_start();		    
-		//get name page for active class
+		// Get the name page for the active class:
 		$page_name= $_SERVER["REQUEST_URI"];
 		if($page_name=="/"){ $index='class="active"'; }
 		else if($page_name=="/main.php"){ $main='class="active"'; }
@@ -14,7 +14,7 @@
 		<div class="container ConNav">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-RA">
-					<span class="sr-only">Desplegar / Ocultar Menu</span>
+					<span class="sr-only">Show / Hide menu</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -26,7 +26,7 @@
 	<ul class="nav navbar-nav">
 	
 		<?php
-		//If there aren't noone logged, display that
+		// If there's no one logged in, display this:
 		if (!isset($_SESSION['user']))
 		{
 			echo '
@@ -35,7 +35,7 @@
 				<li><a data-toggle="modal" data-target="#myModalLogin" href="#myModalLogin"><i class="fa fa-sign-in"></i>&nbsp;Login</a></li></ul>
 			';
 		}
-		//If there are a logged user, display one of the next cases according to the user permissions.
+		// If there is a logged user, display one of the next cases according to the user permissions:
 		else
 		{
 			
@@ -46,9 +46,10 @@
 			{
 			echo '
 				<li '.$index.'><a href="./"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-				<li '.$main.'><a href="main.php"><i class="fa fa-tasks"></i>&nbsp;Tasks</a><li>
-				<li '.$incidences.'><a href="incidences.php"><i class="fa fa-book"></i>&nbsp;Incidences</a><li>
-				<li '.$register.'><a href="register.php"><i class="fa fa-plus"></i>&nbsp;New user</a><li>
+				<li '.$main.'><a href="main.php"><i class="fa fa-tasks"></i>&nbsp;Open Tickets</a><li>
+				<li '.$incidences.'><a href="incidences.php"><i class="fa fa-book"></i>&nbsp;All Incidences</a><li>
+				<li '.$add.'><a href="add_task.php"><i class="fa fa-plus"></i>&nbsp;New Ticket</a><li>
+				<li '.$register.'><a href="register.php"><i class="fa fa-user-plus"></i>&nbsp;New User</a><li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li '.$users.'><a href="user.php"><i class="fa fa-user"></i>&nbsp;'.$user.'</a></li>
@@ -59,8 +60,8 @@
 			{
 				echo '
 				<li '.$index.'><a href="./"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-				<li '.$incidences.'><a href="incidences.php"><i class="fa fa-tasks"></i>&nbsp;Incidences</a><li>
-				<li '.$add.'><a href="add_task.php"><i class="fa fa-book"></i>&nbsp;New Incidence</a><li>
+				<li '.$incidences.'><a href="incidences.php"><i class="fa fa-tasks"></i>&nbsp;My Tickets</a><li>
+				<li '.$add.'><a href="add_task.php"><i class="fa fa-plus"></i>&nbsp;New Ticket</a><li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li '.$users.'><a href="user.php"><i class="fa fa-user"></i>&nbsp;'.$user.'</a></li>

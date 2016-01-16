@@ -2,7 +2,7 @@
 
 session_start(); 
 include("config.php");
-//Creamos el formulario de registro
+// This prints the register form:
 echo '
                 <section class="main container">
                         <div class="row centered">
@@ -58,14 +58,14 @@ echo '
                         </div>
                     </section>';
 
-//if "add" button has been pressed execute the following code
+// If the "Add" button has been pressed execute the following code:
 if(isset($_POST['submit'])) 
 {
-     //Create variables to store the form datum
+     //Create variables to store the form data:
     $userName =  mysqli_real_escape_string($cdb, $_POST['userName']);  
     $query_user = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE userName='".$userName."' ");       
     
-    //Check with the userName no exits in the data base
+    // This checks if the userName exists in the database:
     if(mysqli_num_rows($query_user) == 0) 
     {
         $string = mysqli_real_escape_string($cdb, $_POST['email']);
@@ -75,7 +75,7 @@ if(isset($_POST['submit']))
         {
             
             $query_mail = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE email='".$email."' ");  
-           //Check with the email no exits in the data base
+           // Check if the email exists in the database:
             if(mysqli_num_rows($query_mail) == 0) 
             {       
                 
@@ -84,15 +84,15 @@ if(isset($_POST['submit']))
 
                 $description = mysqli_real_escape_string($cdb, $_POST['description']);
             
-                //Check that new password has been well introduced
+                //Check that the new password has been introduced correctly twice:
                 if($password == $Rpassword)
                 {
-                    //Encrypt the  password
+                    // Encrypt the  password:
                     $hash = sha1($password);
-                    // Comprobamos que los valores recibidos no son NULL
+                    // Check the received values to confirm that they're not NULL:
                     if(!empty($userName) && !empty($password) && !empty($email)) 
                     {
-                        //Insert the new user in the date base
+                        // Register the new user in the database:
                         $query_newuser = mysqli_query($cdb, "INSERT INTO ".$db_table." SET userName='".$userName."', userPassword='".$hash."', email='".$email."', description='".$description."', permissionLevel=2 ");
                     
                         echo '<p>' . mysqli_error($cdb) . '<br /><br />Query: ' . $query_newuser . '</p>';
@@ -100,7 +100,7 @@ if(isset($_POST['submit']))
                         if($query_newuser)
                         {
                             echo '<script type="text/javascript">
-                            alert("The user has been successfully inserted.");
+                            alert("The user has been successfully registered.");
                             window.location.href = "./";
                             </script>';
                         }
@@ -108,13 +108,13 @@ if(isset($_POST['submit']))
                         else
                         {
                             echo '<script type="text/javascript">
-                            alert("The register is failed.");
+                            alert("The registering process failed.");
                             window.location.href = "javascript:window.history.back();";
                             </script>';
                         }
                     }
                 }
-                //The passwords do not match
+                // The passwords do not match:
                 else
                 {
                         echo '<script type="text/javascript">
@@ -123,7 +123,7 @@ if(isset($_POST['submit']))
                         </script>';
                 }    
             }
-            //This email is already registered
+            // This email is already registered:
             else
             {
                     echo '<script type="text/javascript">
@@ -132,7 +132,7 @@ if(isset($_POST['submit']))
                     </script>';
             }
         }
-        //This email not is valid
+        // This email is not valid:
         else
         {
             echo '<script type="text/javascript">
@@ -141,7 +141,7 @@ if(isset($_POST['submit']))
             </script>';
         }        
     }        
-    //This user is already registered
+    // This user is already registered:
     else
     {
             echo '<script type="text/javascript">
