@@ -109,7 +109,7 @@
 				{
 					// This is the query:
 					$q = "insert into tasks (taskName, creationDate, status, categoryId, description, userId, department)
-							values ($n, now(), 1, $c, $d, $u, $dep)";
+							values ('$n', now(), 1, $c, '$d', $u, $dep)";
 					$r = mysqli_query($cdb, $q);
 
 					// Checks if everything went ok registering the data:
