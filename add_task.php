@@ -12,7 +12,7 @@
 	<body>
 		<?php
 			// This includes the header:			
-			//include("includes/header.php");
+			include("includes/header.php");
 		?>
 
 		<?php
@@ -27,10 +27,10 @@
 		?>
 
 		<?php
-			// This includes the login form, the contact info and the footer:
-			// include("includes/flogin.html");
-			// include("includes/contact.html");
-			// include("includes/footer.html");
+			This includes the login form, the contact info and the footer:
+			include("includes/flogin.html");
+			include("includes/contact.html");
+			include("includes/footer.html");
 		?>
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
