@@ -11,9 +11,19 @@
 
 	<body>
 		<?php
-			// This starts a session and includes the header:
-			session_start();
+			// This includes the header:			
 			include("includes/header.php");
+		?>
+
+		<?php
+			// This checks if there is a user logged in:
+			if(isset($_SESSION['user']))
+			{
+				// Anyone can add new tasks or incidences, so there's no need to check for the permission level.
+				// The form to add a new task is created now:
+				echo '<p> Prueba </p>';
+
+			}
 		?>
 
 		<?php
