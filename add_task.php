@@ -28,15 +28,20 @@
 					<form action="" method="post">
 						<p>Task Name: <input type="text" name="taskName"></p>
 						<p>Category: <span><select name="category">';
+						printCategories();
 
-						require("includes/config.php");
-						$q = "SELECT categoryId,categoryName from category";
-						$r = mysqli_query($cdb, $q);
-
-						while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+						function printCategories()
 						{
-							echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
+							require("includes/config.php");
+							$q = "SELECT categoryId,categoryName from category";
+							$r = mysqli_query($cdb, $q);
+
+							while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+							{
+								echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
+							}
 						}
+						
 
 						'</select></span></p>
 						<p>Description: <textarea name="description"></textarea></p>
