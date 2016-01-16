@@ -27,7 +27,7 @@
 		?>
 
 		<?php
-			This includes the login form, the contact info and the footer:
+			// This includes the login form, the contact info and the footer:
 			include("includes/flogin.html");
 			include("includes/contact.html");
 			include("includes/footer.html");
