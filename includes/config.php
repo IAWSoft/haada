@@ -1,12 +1,12 @@
 <?php
 
-$db_host = "localhost";           // Server where is alocate the db
-$db_name = "taskmanager";         // Name db 
-$db_user = "root";                // User for db taskmanager
-$db_password = "";                // Password for db taskmanager
+$db_host = "localhost";           // Server location
+$db_name = "taskmanager";         // Database name
+$db_user = "root";                // Database user
+$db_password = "";                // Database user password
 
-
-$db_table = "users";       // Name table db
+// Database table names
+$db_table = "users";       
 $db_table1 = "category";
 $db_table2 = "department";
 $db_table3 = "status"; 
