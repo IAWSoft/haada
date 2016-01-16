@@ -21,6 +21,7 @@
 			if(isset($_SESSION['user']))
 			{
 				$userId = $_SESSION['userId'];
+				
 				// Anyone can add new tasks or incidences, so there's no need to check for the permission level.
 				// The form to add a new task is created now:
 				echo '
@@ -91,7 +92,7 @@
 				$d = mysqli_real_escape_string($cdb, trim($_POST['description']));
 
 				// This saves the userId into a variable:
-				$u = mysqli_real_escape_string($cdb, trim($_POST['userId']));
+				$u = mysqli_real_escape_string($cdb, trim($_POST['user']));
 
 				// And this checks if there is a department ID:
 				if(empty($_POST['department']))
@@ -108,7 +109,7 @@
 				{
 					// This is the query:
 					$q = "insert into tasks (taskName, creationDate, status, categoryId, description, userId, department)
-							values ($n, getDate(), 1, $c, $d, $u, $dep)";
+							values ($n, now(), 1, $c, $d, $u, $dep)";
 					$r = mysqli_query($cdb, $q);
 
 					// Checks if everything went ok registering the data:
@@ -118,7 +119,7 @@
 					}
 					else
 					{
-						echo '<h1>System Error</h1>
+						echo '<h3>System Error</h3>
                         <p class="error">The query could not be registered due to a system error. Sorry for the inconvenience</p>';
 		                
 		                echo '<p>' . mysqli_error($cdb) . '<br /><br />Query: ' . $q . '</p>';
