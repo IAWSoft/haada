@@ -30,6 +30,7 @@
 						<p>Category: <span><select name="category">';
 
 						require("includes/config.php");
+						// This is going to print the options for the different categories:
 						$q = "SELECT categoryId,categoryName from category";
 						$r = mysqli_query($cdb, $q);
 
@@ -42,6 +43,7 @@
 						<p>Description: <textarea name="description"></textarea></p>
 						<p>Department: <span><select name="department">';
 
+						// This is going to print the options for the different departments:
 						$q2 = "SELECT departmentId,departmentName from department";
 						$r2 = mysqli_query($cdb, $q2);
 
@@ -51,6 +53,7 @@
 						}
 
 						echo '</select></span></p>
+							<input type="submit" value="Create">
 							</form>
 						</div>';
 
