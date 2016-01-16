@@ -53,7 +53,7 @@
 						}
 
 						echo '</select></span></p>
-							<input type="hidden" name="user" value="'. $userId. '"
+							<input type="hidden" name="user" value="'. $userId. '">
 							<input type="submit" value="Create">
 							</form>
 						</div>';
