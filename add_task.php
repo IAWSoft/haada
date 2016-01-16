@@ -35,11 +35,14 @@
 							require("includes/config.php");
 							$q = "SELECT categoryId,categoryName from category";
 							$r = mysqli_query($cdb, $q);
+							$printedCategories = '';
 
 							while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 							{
-								echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
+								$printedCategories .= '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
 							}
+
+							return $printedCategories;
 						}
 						
 
