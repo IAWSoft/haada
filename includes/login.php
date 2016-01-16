@@ -24,6 +24,7 @@ if(mysqli_num_rows($query_login) == 1)
 	$password = $row['userPassword'];
 	$info = $row['description'];
 	$permissions = $row['permissionLevel'];
+	$userId = $row['userId'];
 
 	//Creamos las sesiones para poder pasarlas entre páginas
 	$_SESSION['email'] = $email;
@@ -31,6 +32,7 @@ if(mysqli_num_rows($query_login) == 1)
 	$_SESSION['description'] = $info;
 	$_SESSION['level'] = $permissions;
 	$_SESSION['pass'] = $password;
+	$_SESSION['userId'] = $userId;
 	//Volvemos al index
 	header('Location: ../');
     exit;
