@@ -15,7 +15,7 @@
 			<form action="" method="post">
 				<p>Task Name: <input type="text" name="taskName"></p>
 				<p>Category: <input type="text" name="category"></p>
-				<p>Description: <input type="textbox" name="description"></p>
+				<p>Description: <input type="textarea" name="description"></p>
 				<p>Department: <input type="textbox" name="department"></p>
 			</form>
 		</div>
