@@ -17,10 +17,10 @@
     ?> 
 
 <?php
-//comprobamos que existe un usuario logeado, de esta forma evitamos que se pueda acceder a esta página
+//We check that exists a logged user, in this way we can control the access to this page.
 if(isset($_SESSION['user']))
-{
-    //Creamos el formulario para el cambio de contraseña
+{   
+    //Create the form to change the password.
     echo '
       <div class="posi well">
       <label>Change password for Haada</label>
@@ -44,44 +44,43 @@ if(isset($_SESSION['user']))
         </form>
       </div>';
     
-    // Si el boton de "añadir" fué presionado ejecuta el resto del código   
+    //if "add" button has been pressed execute the following code
     if(isset($_POST['submit'])) 
     {
         include("includes/config.php");
         
-        //Creamos variables con los datos de las sessiones creadas en el login
+        //Create variables with the datum from sessions created on login page
         $email = $_SESSION['email']; 
         $oldpass =  $_SESSION['pass'];
         
-        //Creamos variables para almacenar los datos del formulario
+        //Create variables to store the form datum
         $pass = $_POST['password'];
         $newpassword = $_POST['newpassword'];
         $newpassword2 = $_POST['newpassword2'];
        
-        //Encriptamos la variable $pass
+        //Encrypt $pass variable
         $hash2 =sha1($pass);
-        //Comprobamos si la contraseña vieja coincide con la de la bd
+        //Check that old password coincide with password on database
         if($oldpass == $hash2)
         {
-            //Comprobamos que la nueva contraseña se ha introducido bien 
+            //Check that new password has been well introduced
             if($newpassword == $newpassword2)
             {
-              //Encriptamos la nueva contraseña
+              //Encrypt the new password
               $hash = sha1($newpassword2); 
-              
-              // Comprobamos que los valores recibidos no son NULL
+              //Check that receive values aren't null
               if(!empty($pass) && !empty($newpassword) && !empty($newpassword2)) 
               {
-                  //Actualiamos la contraseña
+                  //Update the password
                   $query_update = mysqli_query($cdb, "UPDATE ".$db_table." SET  userPassword='".$hash."' WHERE users.email = '".$email."' ");
           
                   if($query_update)
                   {
-                    //Destruimos la S_SESSION que contenía la vieja contraseña                          
+                    //Destroy the S_SESSION that contains old password
                     unset($_SESSION['pass']);
-                    //creamos una nueva session que contendrá la nueva contraseña
+                    //Create new session that will contain the new password
                     $_SESSION['pass'] = $hash;
-                    //Mensaje de correcto y volvemos a la ficha del usuario
+                    //A message that confirm it's correct and return to the personal data sheet
                     echo '<script type="text/javascript" >
                     alert("password updated");
                     window.location.href = "user.php";
@@ -91,7 +90,7 @@ if(isset($_SESSION['user']))
             } 
             else
             {
-                //si las nueva contraseña no coincide en los dos campos del form, enviamos un mensaje de aviso  y volvemos al form.
+                //If the password don't coincide with the form fields, send a warning and return to the form.
                 echo '<script type="text/javascript" >
                 alert("The passwords do not match.");
                 window.location.href = "changePassword.php";
@@ -100,7 +99,7 @@ if(isset($_SESSION['user']))
         }
         else
         {
-            //Si la contraseña que queremos cambiar no es correcta, salta este aviso
+            //If the password we want to change isn't correct, pop this warning
             echo '<script type="text/javascript" >
             alert("Password error.");
             window.location.href = "changePassword.php";
@@ -109,7 +108,7 @@ if(isset($_SESSION['user']))
     
     }
 }
-//Si no se está logeado, devolvemos al usuario al index
+//If isn' logged, return the user to the index
 else
 {
      header("location: ./");

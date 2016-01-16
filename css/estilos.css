@@ -24,7 +24,7 @@
 footer 
 {
 	background: #F8F8F8;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -35,6 +35,7 @@ footer
 {
 	margin: 10px;
 }
+
 .posi {
 background-color: white;
 overflow: hidden;
@@ -46,6 +47,13 @@ top: 45%;
 margin-top: -140px;
 margin-left: -150px;
 }
+
+.iconcolor{
+	color: grey;
+}
+
+
+
 
 @media screen and (max-width: 768px){
 .ajustado

@@ -19,14 +19,14 @@
 		<section class="posts col-md-12">	
 			<article class="post clearfix">
 			  <br/>
-        <h1 class="text-center"><b></b>Welcome to HAADA!</b></h1>
+        <h2 class="text-center"><b>Welcome to HAADA!</b></h2>
         <h4 class="text-center">
-          HAADA is a tasks and incidents manager. This tool will help you to organize your tasks and incidents.<br />
+          HAADA is a tasks and incidents manager. This tool will help you to organize your tasks and incidents.<br/>
         </h4>
         <p class="text-center">
-          You will have a root user who can see all the task and incidents. This root user will create new standard users who will add tasks or incidents.
+          You will have a root user who can see the whole tasks and incidents. This root user will create new standard users who will be able to add tasks and incidents.
         </p>
-      </artcle>
+      </article>
     </section>  
   </div>
 </section>  
@@ -35,6 +35,7 @@
     include("includes/flogin.html");
     include("includes/contact.html");
     include("includes/footer.html");
+    
 
   ?> 
   <script src="js/jquery.js"></script>

@@ -1,13 +1,14 @@
 <?php
 
 session_start();
+include("config.php");
+
 //Almacenamos los post enviados desde el form en variables
-$user = $_POST['userName'];
-$password = $_POST['userPassword'];
+$user = mysqli_real_escape_string($cdb, $_POST['userName']);
+$password = mysqli_real_escape_string($cdb, $_POST['userPassword']);
 //encriptamos la contraseña
 $hash = sha1($password); 
 
-include("config.php");
 
 //Ejecutamos la siguiente consulta para comprobar que el user y password coinciden en la misma fila de la bd
 $query_login = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE userName='".$user."' AND userPassword='".$hash."'");		

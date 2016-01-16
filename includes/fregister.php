@@ -58,60 +58,97 @@ echo '
                         </div>
                     </section>';
 
-// Si el boton de "añadir" fué presionado ejecuta el resto del código
+//if "add" button has been pressed execute the following code
 if(isset($_POST['submit'])) 
 {
-     //Creamos variables para almacenar los datos del formulario
-    $userName =  $_POST['userName'];   
-    $password = $_POST['userPassword']; 
-    $Rpassword = $_POST['Rpassword']; 
-    $email = $_POST['email'];
-    $description = $_POST['description'];
-
-    //comprobamos que el password coincide dos veces
-    if($password == $Rpassword)
+     //Create variables to store the form datum
+    $userName =  mysqli_real_escape_string($cdb, $_POST['userName']);  
+    $query_user = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE userName='".$userName."' ");       
+    
+    //Check with the userName no exits in the data base
+    if(mysqli_num_rows($query_user) == 0) 
     {
-        //ebcriptamos el password
-        $hash = sha1($password);
-        // Comprobamos que los valores recibidos no son NULL
-        if(!empty($userName) && !empty($password) && !empty($email)) 
-        {
-            //Insertamos el nuevo usuario en la db
-            $query_newuser = mysqli_query($cdb, "INSERT INTO ".$db_table." SET userName='".$userName."', userPassword='".$hash."', email='".$email."', description='".$description."', permissionLevel=2 ");
+        $string = mysqli_real_escape_string($cdb, $_POST['email']);
         
-            echo '<p>' . mysqli_error($cdb) . '<br /><br />Query: ' . $query_newuser . '</p>';
-            // Si el registro (user) se insertó en la base de datos, mostramos este mensaje
-            if($query_newuser)
-            {
-                echo '<div class="form-group">
-                    <label class="control-label col-xs-2">Congrats:</label>
-                        <div class="col-xs-9">
-                            <p class="form-control">The user has been successfully inserted</p>
-                        </div>
-                    </div>'; 
+        $email = $string;
+        if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $email)) 
+        {
+            
+            $query_mail = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE email='".$email."' ");  
+           //Check with the email no exits in the data base
+            if(mysqli_num_rows($query_mail) == 0) 
+            {       
+                
+                $Rpassword = mysqli_real_escape_string($cdb, $_POST['Rpassword']); 
+                $password = mysqli_real_escape_string($cdb, $_POST['userPassword']); 
+
+                $description = mysqli_real_escape_string($cdb, $_POST['description']);
+            
+                //Check that new password has been well introduced
+                if($password == $Rpassword)
+                {
+                    //Encrypt the  password
+                    $hash = sha1($password);
+                    // Comprobamos que los valores recibidos no son NULL
+                    if(!empty($userName) && !empty($password) && !empty($email)) 
+                    {
+                        //Insert the new user in the date base
+                        $query_newuser = mysqli_query($cdb, "INSERT INTO ".$db_table." SET userName='".$userName."', userPassword='".$hash."', email='".$email."', description='".$description."', permissionLevel=2 ");
+                    
+                        echo '<p>' . mysqli_error($cdb) . '<br /><br />Query: ' . $query_newuser . '</p>';
+                     
+                        if($query_newuser)
+                        {
+                            echo '<script type="text/javascript">
+                            alert("The user has been successfully inserted.");
+                            window.location.href = "./";
+                            </script>';
+                        }
+                        
+                        else
+                        {
+                            echo '<script type="text/javascript">
+                            alert("The register is failed.");
+                            window.location.href = "javascript:window.history.back();";
+                            </script>';
+                        }
+                    }
+                }
+                //The passwords do not match
+                else
+                {
+                        echo '<script type="text/javascript">
+                        alert("The passwords do not match.");
+                        window.location.href = "javascript:window.history.back();";
+                        </script>';
+                }    
             }
-            //Si el registro falla, sacamos el siguiente error.
+            //This email is already registered
             else
             {
-                echo '<div class="form-group">
-                    <label class="control-label col-xs-2">Error:</label>
-                        <div class="col-xs-9">
-                            <p class="form-control">The register is failed.</p>
-                        </div>
-                </div>';
-            } 
+                    echo '<script type="text/javascript">
+                    alert("This email is already registered.");
+                    window.location.href = "javascript:window.history.back();";
+                    </script>';
+            }
         }
-    }
-    //Si las contraseñas no coinciden, mostarmos el siguiente error con un alert.
+        //This email not is valid
+        else
+        {
+            echo '<script type="text/javascript">
+            alert("This email not is valid.");
+            window.location.href = "javascript:window.history.back();";
+            </script>';
+        }        
+    }        
+    //This user is already registered
     else
     {
             echo '<script type="text/javascript">
-            alert("The passwords do not match.");
+            alert("This user is already registered.");
             window.location.href = "javascript:window.history.back();";
             </script>';
     }
 }      
-
-
 
 ?>

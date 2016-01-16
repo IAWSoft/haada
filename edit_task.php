@@ -17,14 +17,14 @@
     ?> 
 
 <?php
-//comprobamos que existe un usuario logeado, de esta forma evitamos que se pueda acceder a esta página
+//Check that user is logged, in this way we can control the access to this page
 if(isset($_SESSION['user']))
 {
     $permissions = $_SESSION['level'];
-	//If user have permission 1	
+	//If user have root permission
 	if($permissions == 1)
 	{
-        //Creamos el formulario el edit_task
+        //Create the form edit_task
     
         $taskId = $_GET['task'];
         include("includes/config.php"); 
@@ -53,7 +53,7 @@ if(isset($_SESSION['user']))
                                                 <div class="form-group">
                                                     <label class="control-label col-xs-2">Task Name:</label>
                                                         <div class="col-xs-9">
-                                                            <p type="text" class="form-control" name="taskName">'.$row['taskName'].'</p>
+                                                            <label class="control-label" name="taskName">'.$row['taskName'].'</label>
                                                         </div>
                                                 </div>        
                                                 <div class="form-group">
@@ -72,7 +72,7 @@ if(isset($_SESSION['user']))
                                                     <label class="control-label col-xs-2">status:</label>
                                                         <div class="col-xs-9">
                                                             <select class="form-control" name="status">
-                                                                 <option value="'.$row['status'].'">'.$row['statusName'].'</option>';
+                                                                    <option value="'.$row['status'].'" selected>'.$row['statusName'].'</option>';
                                                                     $query_status = mysqli_query($cdb, "SELECT * FROM ".$db_table3." ORDER BY statusId asc");
                                                                     while($row2 = mysqli_fetch_assoc($query_status))
                                                                     {
@@ -99,7 +99,7 @@ if(isset($_SESSION['user']))
                                                 <div class="form-group">
                                                     <label class="control-label col-xs-2">Description:</label>
                                                         <div class="col-xs-9">
-                                                            <p type="text" class="form-control" name="description">'.$row['description'].'</p>
+                                                             <label class="control-label" name="description">'.$row['description'].'</label>
                                                         </div>
                                                 </div>
                                                  <div class="form-group">
@@ -111,7 +111,7 @@ if(isset($_SESSION['user']))
                                                  <div class="form-group">
                                                     <label class="control-label col-xs-2">User creator:</label>
                                                         <div class="col-xs-9">
-                                                            <p type="text" class="form-control" name="user">'.$row['userName'].'</p>
+                                                             <label class="control-label" name="user">'.$row['userName'].'</label>
                                                         </div>
                                                 </div>
                                                 <div class="form-group">           
@@ -131,13 +131,14 @@ if(isset($_SESSION['user']))
                                                 <div class="form-group">
                                                     <label class="control-label col-xs-2">Date create incident:</label>
                                                         <div class="col-xs-9">
-                                                            <p type="text" class="form-control" name="creationDate">'.$row['creationDate'].'</p>
+                                                             <label class="control-label" name="creationDate">'.$row['creationDate'].'</label>
                                                         </div>
+                                            <div class="form-group">
+                                                <div class="col-xs-offset-3 col-xs-9">
+                                                     <br /><input type="submit" class="btn btn-primary" value="Submit" name="submit">
                                                 </div>
-                                                <div class="col-sm-offset-4 col-sm-8">
-                                                    <button type="submit"  name="submit" value="Submit" class="form-group btn btn-success">Submit</button>
-                                                </div>
-    
+                                            </div>
+                                            
                                             </form>
                                           </div>
                                     </article>
@@ -145,7 +146,7 @@ if(isset($_SESSION['user']))
                             </div>
                         </section>';
         }
-        // Si el boton de "añadir" fué presionado ejecuta el resto del código   
+        //If "add" button has been pressed, execute the following code.
         if(isset($_POST['submit'])) 
         {
             include("includes/config.php");
@@ -161,7 +162,7 @@ if(isset($_SESSION['user']))
     
             if($query_update)
             {
-                //Si los datos introducidos son correctos, lanzamos alert con aviso.
+                //If the introduced information is correct, launch a notice by an alert
                 echo '<script type="text/javascript">
                 alert("Task update");
                 window.location.href ="main.php";
@@ -169,7 +170,7 @@ if(isset($_SESSION['user']))
             }
             else
             {
-                //Si los datos introducidos no son correctos, lanzamos alert con aviso.
+                //If the introduced information isn't correct, launch a notice by an alert
                 echo '<script type="text/javascript">
                 alert("Task update: ERROR");
                 window.location.href ="javascript:window.history.back();";
@@ -177,12 +178,11 @@ if(isset($_SESSION['user']))
             }    
         }
 	}
-	//if user no have level 1, retunr to index.
+	//if the logged user isn't level 1, return to index.
 	else 
-	
 	                
             {
-                //Si los datos introducidos no son correctos, lanzamos alert con aviso.
+                //If the introduced information isn't correct, launch a notice by an alert
                 echo '<script type="text/javascript">
                 alert("Task update: ERROR");
                 window.location.href ="javascript:window.history.back();";
@@ -190,7 +190,7 @@ if(isset($_SESSION['user']))
             } 
 	}
 
-//Si no se está logeado, devolvemos al usuario al index
+//if noone is logged, return to index.
 else
 {
      header("location: ./");

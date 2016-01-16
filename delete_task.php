@@ -18,25 +18,25 @@ $page_title = 'delete_task';
 include ('includes/header.php'); ?>
 
 <?php	
-
+// i will implement, at the moment of delete answer yes or not. in process
 	require ('includes/config.php');
 
-//comprobamos que existe un usuario logeado, de esta forma evitamos que se pueda acceder a esta página
+//control of ssesion
 if(isset($_SESSION['user']))
 {
     $permissions = $_SESSION['level'];
 	//If user have permission 1	
 	if($permissions == 1)
 	{	
-        $taskId = $_GET['task']; //captacion de datos
-    	$sSQL = "delete from tasks where taskId='$taskId'";	// sentencia SQL
+        $taskId = $_GET['task']; //get data
+    	$sSQL = "delete from tasks where taskId='$taskId'";	// SQL Sentence
     	$r = mysqli_query ($cdb, $sSQL);   
      		mysqli_close($cdb);
      		
                 echo '<script type="text/javascript">
                 alert("Task Eliminated");
             window.location.href ="main.php";
-                </script>';//refresco de pagina
+                </script>';//refresh page
 	}
     else
     {

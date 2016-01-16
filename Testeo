@@ -1,0 +1,7 @@
+PRIMEROS TESTEOS:
+Problemas con los dropdown list se repite el que estaba por defecto. Arreglado.
+Bug con las contraseñas. Tras cambiar la contraseña en la misma sesion. Arreglado.
+Se podia repetir el nombre de usuario y correo. Arreglado
+
+SEGUNDA TANDA DE TESTEOS:
+El usuario no tenia forma de saber donde se encontraba. Class active puesta en el head. Arreglado.
