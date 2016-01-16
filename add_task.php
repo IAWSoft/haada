@@ -38,11 +38,21 @@
 							echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
 						}
 
-						'</select></span></p>
+						echo '</select></span></p>
 						<p>Description: <textarea name="description"></textarea></p>
-						<p>Department: <input type="textbox" name="department"></p>
-					</form>
-				</div>';
+						<p>Department: <span><select name="department">';
+
+						$q2 = "SELECT departmentId,departmentName from department";
+						$r2 = mysqli_query($cdb, $q2);
+
+						while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC))
+						{
+							echo '<option value="'. $row['departmentId'] . '">' . $row['departmentName'] . '</option>';
+						}
+
+						echo '</select></span></p>
+							</form>
+						</div>';
 
 			}
 		?>
