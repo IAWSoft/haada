@@ -11,15 +11,6 @@
 
 	<body>
 
-		<div>
-			<form action="" method="post">
-				<p>Task Name: <input type="text" name="taskName"></p>
-				<p>Category: <input type="text" name="category"></p>
-				<p>Description: <input type="textarea" name="description"></p>
-				<p>Department: <input type="textbox" name="department"></p>
-			</form>
-		</div>
-
 		<?php
 			// This includes the header:			
 			include("includes/header.php");
@@ -33,7 +24,14 @@
 				// Anyone can add new tasks or incidences, so there's no need to check for the permission level.
 				// The form to add a new task is created now:
 				echo '
-				<p> Prueba </p>';
+				<div>
+					<form action="" method="post">
+						<p>Task Name: <input type="text" name="taskName"></p>
+						<p>Category: <input type="text" name="category"></p>
+						<p>Description: <textarea name="description"></textarea></p>
+						<p>Department: <input type="textbox" name="department"></p>
+					</form>
+				</div>';
 
 			}
 		?>
