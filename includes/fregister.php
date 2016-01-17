@@ -11,35 +11,35 @@ echo '
                                     <div class="well">
    <form class="form-horizontal " action="" method="post">
     <div class="form-group">
-        <label class="control-label col-xs-2">User name: </label>
+        <label class="control-label col-xs-2">Username: </label>
         <div class="col-xs-9">
-            <input type="text" class="form-control"  placeholder="User name" name="userName">
+            <input type="text" class="form-control"  placeholder="Username" name="userName">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-xs-2">Password</label>
+        <label class="control-label col-xs-2">Password:</label>
         <div class="col-xs-9">
             <input type="password" class="form-control"  placeholder="Password" name="userPassword">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-xs-2">Repeat password</label>
+        <label class="control-label col-xs-2">Repeat password:</label>
         <div class="col-xs-9">
             <input type="password" class="form-control"  placeholder="Repeat password" name="Rpassword">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-xs-2">email: </label>
+        <label class="control-label col-xs-2">Email: </label>
         <div class="col-xs-9">
-            <input type="text" class="form-control"  placeholder="email" name="email">
+            <input type="text" class="form-control"  placeholder="Email" name="email">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-xs-2">Description: </label>
+        <label class="control-label col-xs-2">Description:</label>
         <div class="col-xs-9">
             <textarea type="text" class="form-control"  rows="5" placeholder="Description" name="description"></textarea>
         </div>
@@ -47,7 +47,7 @@ echo '
 
     <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
-             <br /><input type="submit" class="btn btn-primary" value="Submit" name="submit">
+             <br /><input type="submit" class="btn btn-primary" value="Register" name="submit">
         </div>
     </div>
 
@@ -61,7 +61,7 @@ echo '
 // If the "Add" button has been pressed execute the following code:
 if(isset($_POST['submit'])) 
 {
-     //Create variables to store the form data:
+     // Create variables to store the form data:
     $userName =  mysqli_real_escape_string($cdb, $_POST['userName']);  
     $query_user = mysqli_query($cdb, "SELECT * FROM ".$db_table." WHERE userName='".$userName."' ");       
     
@@ -84,7 +84,7 @@ if(isset($_POST['submit']))
 
                 $description = mysqli_real_escape_string($cdb, $_POST['description']);
             
-                //Check that the new password has been introduced correctly twice:
+                // Check if the password has been introduced correctly twice:
                 if($password == $Rpassword)
                 {
                     // Encrypt the  password:
@@ -136,7 +136,7 @@ if(isset($_POST['submit']))
         else
         {
             echo '<script type="text/javascript">
-            alert("This email not is valid.");
+            alert("This email is not valid.");
             window.location.href = "javascript:window.history.back();";
             </script>';
         }        

@@ -19,13 +19,12 @@
 		<section class="posts col-md-12">	
 			<article class="post clearfix">
 			  <br/>
-        <h2 class="text-center"><b>Welcome to HAADA!</b></h2>
+        <h2 class="text-center"><b>Welcome to <span><img src="../images/logo_haada_trans_landscape.png" style="height: 23px;"></span>!</b></h2>
         <h4 class="text-center">
-          HAADA is a tasks and incidents manager. This tool will help you to organize your tasks and incidents.<br/>
+          </br>HAADA is a new generation tool created to help you keep track of the problems that come up in your organization. </br>You can use it to create and manage incidences using a ticket system.<br/></br>
         </h4>
-        <p class="text-center">
-          You will have a root user who can see the whole tasks and incidents. This root user will create new standard users who will be able to add tasks and incidents.
-        </p>
+        <p class="text-center">Register and contact us to make you your organization administrator, and then you can manage your organization users yourself.</br>
+          As an administrator, you will have access to the whole set of features. Your subordinates can create new tickets and keep track of them.</p>
       </article>
     </section>  
   </div>
