@@ -19,7 +19,10 @@
 		<section class="posts col-md-12">	
 			<article class="post clearfix">
 			  <br/>
-        <h2 class="text-center"><b>Welcome to <span><img src="../images/logo_haada_trans_landscape.png" style="height: 23px;"></span>!</b></h2>
+			  <!-- Use this? 
+        <h2 class="text-center"><b>Welcome to <span><img src="../images/logo_haada_trans_landscape.png" style="height: 23px;"></span>!</b></h2> -->
+        <!-- Or this? -->
+        <h2 class="text-center"> <span><img src="../images/logo_haada_trans_landscape.png" style="height: 80px;"></span></h2>
         <h4 class="text-center">
           </br>HAADA is a new generation tool created to help you keep track of the problems that come up in your organization. </br>You can use it to create and manage incidences using a ticket system.<br/></br>
         </h4>
