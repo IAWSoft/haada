@@ -28,7 +28,7 @@
                         on t.status = s.statusId)
                         inner join users as u
                         on t.userId = u.userId)
-                        where status='1'");//Execute the query
+                        where status='1'"); // Execute the query
           
           echo '<table border="1">
                   <thead>
@@ -42,7 +42,7 @@
                     <th>Information</th>
                     <th>User</th>
                     <th>Department</th>
-                    <th>Options</th>
+                    <th id="optionCell">Options</th>
                     </tr>
                     </thead>';
           
@@ -58,7 +58,7 @@
                         <td>'.$row["information"].'</td>
                         <td>'.$row["userName"].'</td>
                         <td>'.$row["departmentName"].'</td>
-                        <td><a class="iconcolor" href="edit_task.php?task='.$row["taskId"].'"><i class="fa fa-pencil fa-2x"></i></a>
+                        <td id="option"><a class="iconcolor" href="edit_task.php?task='.$row["taskId"].'"><i class="fa fa-pencil fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                         <a class="iconcolor" href="delete_task.php?task='.$row["taskId"].'"><b><i class="fa fa-trash fa-2x"></i></b></a></td>
                       </tr>
                     '; 

@@ -31,41 +31,58 @@
                                 <section class="posts col-md-12">   
                                     <article class="post clearfix">
                                         <div class="well">
-											<form action="" method="post">
+											<form class="form-horizontal action="" method="post">
 												<div class="form-group">
 												<label class="control-label col-xs-2">Task name:</label>
 													<div class="col-xs-9">
 														<input type="text" class="form-control" name="taskName">
 													</div>
 												</div>
-												<p>Category: <span><select name="category">';
+												<div class="form-group">
+													<label class="control-label col-xs-2">Category:</label>
+														<div class="col-xs-9">
+															<select class="form-control" name="category">';
 						
-												require("includes/config.php");
-												// This is going to print the options for the different categories:
-												$q = "SELECT categoryId,categoryName from category";
-												$r = mysqli_query($cdb, $q);
+															require("includes/config.php");
+															// This is going to print the options for the different categories:
+															$q = "SELECT categoryId,categoryName from category";
+															$r = mysqli_query($cdb, $q);
+									
+															while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+															{
+																echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
+															}
 						
-												while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
-												{
-													echo '<option value="'. $row['categoryId'] . '">' . $row['categoryName'] . '</option>';
-												}
-						
-												echo '</select></span></p>
-												<p>Description: <textarea name="description"></textarea></p>
-												<p>Department: <span><select name="department">';
-						
-												// This is going to print the options for the different departments:
-												$q2 = "SELECT departmentId,departmentName from department";
-												$r2 = mysqli_query($cdb, $q2);
-						
-												while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC))
-												{
-													echo '<option value="'. $row['departmentId'] . '">' . $row['departmentName'] . '</option>';
-												}
-						
-												echo '</select></span></p>
+												echo '	</select>
+													</div>
+												</div>
+												 <div class="form-group">
+                                                    <label class="control-label col-xs-2">Description :</label>
+                                                        <div class="col-xs-9">
+                                                            <textarea type="text" class="form-control" name="description">'.$row['information'].'</textarea>
+                                                        </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-xs-2">Department :</label>
+                                                        <div class="col-xs-9">
+															<select class="form-control" name="department">';
+																// This is going to print the options for the different departments:
+																$q2 = "SELECT departmentId,departmentName from department";
+																$r2 = mysqli_query($cdb, $q2);
+										
+																while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC))
+																{
+																	echo '<option value="'. $row['departmentId'] . '">' . $row['departmentName'] . '</option>';
+																}
+												echo '		</select>
+														</div>
+                                                </div>
 													<input type="hidden" name="user" value="'. $userId. '">
-													<input type="submit" value="Create">
+												<div class="form-group">
+                                                	<div class="col-xs-offset-3 col-xs-9">
+													<br /><input type="submit" class="btn btn-primary" value="Create" name="submit">
+                                                	</div>
+                                            	</div>
 											</form>
 										</div>
                                     </article>

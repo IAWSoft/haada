@@ -134,7 +134,7 @@ if(isset($_SESSION['user']))
                                                         </div>
                                             <div class="form-group">
                                                 <div class="col-xs-offset-3 col-xs-9">
-                                                     <br /><input type="submit" class="btn btn-primary" value="Submit" name="submit">
+                                                     <br /><input type="submit" class="btn btn-primary" value="Save changes" name="Submit">
                                                 </div>
                                             </div>
                                             

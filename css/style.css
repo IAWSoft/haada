@@ -102,3 +102,11 @@ tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
 }
+
+#option {
+	text-align: center;
+}
+
+#optionCell {
+	width: 100px;
+}
