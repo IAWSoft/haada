@@ -16,14 +16,14 @@
     ?> 
 
 <?php
-//Check that user is logged, in this way we can control the access to this page
+// Check if a user is logged in. This way we can control the access to this page:
 if(isset($_SESSION['user']))
 {
     $permissions = $_SESSION['level'];
-	//If user have root permission
+	// If user has root permission:
 	if($permissions == 1)
 	{
-        //Create the form edit_task
+        // Create the edit_task form:
     
         $taskId = $_GET['task'];
         include("includes/config.php"); 
@@ -68,7 +68,7 @@ if(isset($_SESSION['user']))
                                                         </div>
                                                 </div>
                                                <div class="form-group">           
-                                                    <label class="control-label col-xs-2">status:</label>
+                                                    <label class="control-label col-xs-2">Status:</label>
                                                         <div class="col-xs-9">
                                                             <select class="form-control" name="status">
                                                                     <option value="'.$row['status'].'" selected>'.$row['statusName'].'</option>';
@@ -114,7 +114,7 @@ if(isset($_SESSION['user']))
                                                         </div>
                                                 </div>
                                                 <div class="form-group">           
-                                                    <label class="control-label col-xs-2">department:</label>
+                                                    <label class="control-label col-xs-2">Department:</label>
                                                         <div class="col-xs-9">
                                                             <select class="form-control" name="department">
                                                                  <option value="'.$row['department'].'">'.$row['departmentName'].'</option>';
@@ -128,7 +128,7 @@ if(isset($_SESSION['user']))
                                                         </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-xs-2">Date create incident:</label>
+                                                    <label class="control-label col-xs-2">Creation Date:</label>
                                                         <div class="col-xs-9">
                                                              <label class="control-label" name="creationDate">'.$row['creationDate'].'</label>
                                                         </div>
@@ -145,7 +145,7 @@ if(isset($_SESSION['user']))
                             </div>
                         </section>';
         }
-        //If "add" button has been pressed, execute the following code.
+        // If the "add" button has been pressed, execute the following code.
         if(isset($_POST['submit'])) 
         {
             include("includes/config.php");
@@ -161,7 +161,7 @@ if(isset($_SESSION['user']))
     
             if($query_update)
             {
-                //If the introduced information is correct, launch a notice by an alert
+                // If the introduced information is correct, show a message using an alert:
                 echo '<script type="text/javascript">
                 alert("Task update");
                 window.location.href ="main.php";
@@ -169,7 +169,7 @@ if(isset($_SESSION['user']))
             }
             else
             {
-                //If the introduced information isn't correct, launch a notice by an alert
+                // If the introduced information isn't correct, show a message using an alert:
                 echo '<script type="text/javascript">
                 alert("Task update: ERROR");
                 window.location.href ="javascript:window.history.back();";
@@ -177,11 +177,11 @@ if(isset($_SESSION['user']))
             }    
         }
 	}
-	//if the logged user isn't level 1, return to index.
+	// If the logged user isn't level 1, return to index.
 	else 
 	                
             {
-                //If the introduced information isn't correct, launch a notice by an alert
+                // If the introduced information isn't correct, show a message using an alert:
                 echo '<script type="text/javascript">
                 alert("Task update: ERROR");
                 window.location.href ="javascript:window.history.back();";
@@ -189,7 +189,7 @@ if(isset($_SESSION['user']))
             } 
 	}
 
-//if noone is logged, return to index.
+// If no one is logged in, return to index:
 else
 {
      header("location: ./");

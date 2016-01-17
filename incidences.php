@@ -20,7 +20,7 @@
  if(isset($_SESSION['user']))
 {
     $permissions = $_SESSION['level'];
-	//If user have root permission
+	// If user has root privileges:
 	if($permissions == 1)
 	{
 	  
@@ -33,7 +33,7 @@
                         inner join status as s 
                         on t.status = s.statusId)
                         inner join users as u
-                        on t.userId = u.userId)");//Execute the query
+                        on t.userId = u.userId)"); // Execute the query
           
           echo '<table border="1">
                   <thead>
@@ -81,7 +81,7 @@
                         on t.status = s.statusId)
                         inner join users as u
                         on t.userId = u.userId)
-                        WHERE userName ='".$user."'");//Execute the query
+                        WHERE userName ='".$user."'"); // Execute the query
           
           echo '<table border="1">
                   <thead>
@@ -136,7 +136,7 @@
 if($total_registros > 0)
 {   
 
-    //Limit the search
+    // Search Limit:
     $incidencia_pagina = 1;
     $pagina = false;
     
@@ -155,10 +155,10 @@ if($total_registros > 0)
       }
     
     
-    //Total pages calculation
+    // Total pages calculation
     $total_paginas = ceil($totalincidencias / $incidencia_pagina);
     
-    //Query that will be different at every page
+    // Query that will be different in every page
     $consulta = "SELECT t.taskId, t.taskName, t.creationDate, t.status, t.categoryId, t.department, t.startDate, t.finishDate, s.statusName, c.categoryName,t.description, t.information, u.userName, d.departmentName
                         from ((((tasks as t inner join category as c 
                         on t.categoryId = c.categoryId)
@@ -218,12 +218,12 @@ if($total_registros > 0)
       {
          if ($pagina == $i) 
          {
-         //If current page index is shown, dont put the link
+         //If current page index is shown, don't put the link
           echo $pagina;
          }
          else
          {
-           //If index dont belong to the current page, put the link to go to the correct page
+           //If index doesn't belong to the current page, put the link to go to the right page
            echo '<li><a class="pagination" href="'.$url.'?pagina='.$i.'">'.$i.'</a></li>';
          }
          if ($pagina != $total_paginas)

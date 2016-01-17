@@ -18,17 +18,17 @@ $page_title = 'delete_task';
 include ('includes/header.php'); ?>
 
 <?php	
-// i will implement, at the moment of delete answer yes or not. in process
+// We still have to code a way to ask for confirmation to delete an element.
 	require ('includes/config.php');
 
-//control of ssesion
+// Session control:
 if(isset($_SESSION['user']))
 {
     $permissions = $_SESSION['level'];
-	//If user have permission 1	
+	// If user has level 1 privileges:
 	if($permissions == 1)
 	{	
-        $taskId = $_GET['task']; //get data
+        $taskId = $_GET['task']; // Get data
     	$sSQL = "delete from tasks where taskId='$taskId'";	// SQL Sentence
     	$r = mysqli_query ($cdb, $sSQL);   
      		mysqli_close($cdb);
@@ -36,7 +36,7 @@ if(isset($_SESSION['user']))
                 echo '<script type="text/javascript">
                 alert("Task Eliminated");
             window.location.href ="main.php";
-                </script>';//refresh page
+                </script>'; // Refresh page
 	}
     else
     {

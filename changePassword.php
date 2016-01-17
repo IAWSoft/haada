@@ -17,72 +17,72 @@
     ?> 
 
 <?php
-//We check that exists a logged user, in this way we can control the access to this page.
+// This checks if a user is logged in, to control the access to this page:
 if(isset($_SESSION['user']))
 {   
-    //Create the form to change the password.
+    // Print the form to change the password:
     echo '
       <div class="posi well">
-      <label>Change password for Haada</label>
+      <label>Change account password:</label>
         <form class="form-horizontal " action="changePassword.php" method="post">
-            <div>
-               <input type="password" class="form-control"   placeholder="Old password" name="password" requiered>
+            <div></br>
+               <input type="password" class="form-control"   placeholder="Type your old password" name="password" requiered>
              </div>
              <br/>
     
              <div >
-               <input type="password" class="form-control"   placeholder="New password" name="newpassword" requiered>
+               <input type="password" class="form-control"   placeholder="Type a new password" name="newpassword" requiered>
              </div>
              <br/>
             <div>
-               <input type="password" class="form-control"   placeholder="Repeat new password" name="newpassword2" requiered>
+               <input type="password" class="form-control"   placeholder="Repeat the new password" name="newpassword2" requiered>
              </div>
              <br/>
              <div >
-                <input type="submit" class="btn btn-primary btn-md btn-block" value="submit" name="submit">
+                <input type="submit" class="btn btn-primary btn-md btn-block" value="Change password" name="submit">
              </div>
         </form>
       </div>';
     
-    //if "add" button has been pressed execute the following code
+    // If the "add" button has been pressed execute the following code:
     if(isset($_POST['submit'])) 
     {
         include("includes/config.php");
         
-        //Create variables with the datum from sessions created on login page
+        // Create variables with the data from the sessions created on login page:
         $email = $_SESSION['email']; 
         $oldpass =  $_SESSION['pass'];
         
-        //Create variables to store the form datum
+        // Create variables to store the form data:
         $pass = $_POST['password'];
         $newpassword = $_POST['newpassword'];
         $newpassword2 = $_POST['newpassword2'];
        
-        //Encrypt $pass variable
+        // Encrypt $pass variable:
         $hash2 =sha1($pass);
-        //Check that old password coincide with password on database
+        // Check if the old password is the one on the database:
         if($oldpass == $hash2)
         {
-            //Check that new password has been well introduced
+            // Check if the new password has been written right twice:
             if($newpassword == $newpassword2)
             {
-              //Encrypt the new password
+              // Encrypt the new password:
               $hash = sha1($newpassword2); 
-              //Check that receive values aren't null
+              // Check if received values aren't NULL:
               if(!empty($pass) && !empty($newpassword) && !empty($newpassword2)) 
               {
-                  //Update the password
+                  //Update the password:
                   $query_update = mysqli_query($cdb, "UPDATE ".$db_table." SET  userPassword='".$hash."' WHERE users.email = '".$email."' ");
           
                   if($query_update)
                   {
-                    //Destroy the S_SESSION that contains old password
+                    // Destroy the S_SESSION that contains old password:
                     unset($_SESSION['pass']);
-                    //Create new session that will contain the new password
+                    // Create a new session that will contain the new password:
                     $_SESSION['pass'] = $hash;
-                    //A message that confirm it's correct and return to the personal data sheet
+                    // Alert prompt to show that the password has been updated and return to the account settings:
                     echo '<script type="text/javascript" >
-                    alert("password updated");
+                    alert("Password updated.");
                     window.location.href = "user.php";
                     </script>';       
                   }
@@ -90,7 +90,7 @@ if(isset($_SESSION['user']))
             } 
             else
             {
-                //If the password don't coincide with the form fields, send a warning and return to the form.
+                // If the two new passwords are not the same in the form fields, show a warning and return to the form:
                 echo '<script type="text/javascript" >
                 alert("The passwords do not match.");
                 window.location.href = "changePassword.php";
@@ -99,7 +99,7 @@ if(isset($_SESSION['user']))
         }
         else
         {
-            //If the password we want to change isn't correct, pop this warning
+            // If the password we want to change isn't correct, pop this warning:
             echo '<script type="text/javascript" >
             alert("Password error.");
             window.location.href = "changePassword.php";
@@ -108,7 +108,7 @@ if(isset($_SESSION['user']))
     
     }
 }
-//If isn' logged, return the user to the index
+// If a user isn't logged, return the user to the index page:
 else
 {
      header("location: ./");
