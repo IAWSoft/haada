@@ -47,7 +47,7 @@
 														<div class="col-xs-9">
 															<select class="form-control" name="category">';
 						
-															/*Esto no tiene que ir aqui, no?*/require("includes/config.php");
+															require("includes/config.php");
 															// This is going to print the options for the different categories:
 															$q = "SELECT categoryId,categoryName from category";
 															$r = mysqli_query($cdb, $q);

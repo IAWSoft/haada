@@ -28,7 +28,7 @@
                         on t.status = s.statusId)
                         inner join users as u
                         on t.userId = u.userId)
-                        where status='1'"); // Execute the query
+                        where status='1' order by t.creationDate desc"); // Execute the query
           
           echo '<table border="1">
                   <thead>

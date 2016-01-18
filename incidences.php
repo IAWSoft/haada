@@ -33,7 +33,7 @@
                         inner join status as s 
                         on t.status = s.statusId)
                         inner join users as u
-                        on t.userId = u.userId)"); // Execute the query
+                        on t.userId = u.userId) order by t.creationDate desc"); // Execute the query
           
           echo '<table border="1">
                   <thead>
