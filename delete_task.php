@@ -27,6 +27,7 @@ if(isset($_SESSION['user']))
     $permissions = $_SESSION['level'];
 	// If user has level 1 privileges:
 	if($permissions == 1)
+	
 	{	
         $taskId = $_GET['task']; // Get data
     	$sSQL = "delete from tasks where taskId='$taskId'";	// SQL Sentence

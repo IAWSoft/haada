@@ -6,7 +6,7 @@ session_start();
 	session_destroy(); // Destroy the session itself.
 	setcookie ('PHPSESSID', '', time()-3600, '/', '', 0, 0); // Destroy the cookie.
 
-	setcookie("login", '', time()-60*60*24*365,"/");
-header("location: ../");
+
+	header("location: ../");//return to index.php
 
 ?>

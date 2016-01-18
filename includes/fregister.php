@@ -9,47 +9,47 @@ echo '
                             <section class="posts col-md-12">   
                                 <article class="post clearfix">
                                     <div class="well">
-   <form class="form-horizontal " action="" method="post">
-    <div class="form-group">
-        <label class="control-label col-xs-2">Username: </label>
-        <div class="col-xs-9">
-            <input type="text" class="form-control"  placeholder="Username" name="userName">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-2">Password:</label>
-        <div class="col-xs-9">
-            <input type="password" class="form-control"  placeholder="Password" name="userPassword">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-2">Repeat password:</label>
-        <div class="col-xs-9">
-            <input type="password" class="form-control"  placeholder="Repeat password" name="Rpassword">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-2">Email: </label>
-        <div class="col-xs-9">
-            <input type="text" class="form-control"  placeholder="Email" name="email">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-2">Description:</label>
-        <div class="col-xs-9">
-            <textarea type="text" class="form-control"  rows="5" placeholder="Description" name="description"></textarea>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-9">
-             <br /><input type="submit" class="btn btn-primary" value="Register" name="submit">
-        </div>
-    </div>
+                                       <form class="form-horizontal " action="" method="post">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2">Username: </label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control"  placeholder="Username" name="userName">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2">Password:</label>
+                                            <div class="col-xs-9">
+                                                <input type="password" class="form-control"  placeholder="Password" name="userPassword">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2">Repeat password:</label>
+                                            <div class="col-xs-9">
+                                                <input type="password" class="form-control"  placeholder="Repeat password" name="Rpassword">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2">Email: </label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control"  placeholder="Email" name="email">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2">Description:</label>
+                                            <div class="col-xs-9">
+                                                <textarea type="text" class="form-control"  rows="5" placeholder="Description" name="description"></textarea>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <div class="col-xs-offset-3 col-xs-9">
+                                                 <br /><input type="submit" class="btn btn-primary" value="Register" name="submit">
+                                            </div>
+                                        </div>
 
                                         </form>
                                       </div>

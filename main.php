@@ -14,11 +14,11 @@
   <?php
   session_start();
     include("includes/header.php");
+    include("includes/config.php");
   ?> 
 
   <?php
- 
-  include("includes/config.php");
+  if(isset($_SESSION['user'])){
           $query_task = mysqli_query($cdb, "SELECT t.taskId, t.taskName, t.creationDate, t.status, t.categoryId, t.department, t.startDate, t.finishDate, s.statusName, c.categoryName,t.description, t.information, u.userName, d.departmentName
                         from ((((tasks as t inner join category as c 
                         on t.categoryId = c.categoryId)
@@ -28,7 +28,8 @@
                         on t.status = s.statusId)
                         inner join users as u
                         on t.userId = u.userId)
-                        where status='1' order by t.creationDate desc"); // Execute the query
+                        where status='1' 
+                        order by t.taskId desc"); // Execute the query
           
           echo '<table border="1">
                   <thead>
@@ -64,6 +65,11 @@
                     '; 
           }
           echo '</table>';
+  }else{
+    echo '<script type="text/javascript">
+              alert("You do not have permission to view this page.");
+          </script>';
+  }
   ?>       
 
     

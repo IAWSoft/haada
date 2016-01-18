@@ -5,7 +5,7 @@
 
 session_start();
 include("config.php");
-//Creamos una cookie por si el usuario se equivoca con el user o pass, al regresar al index salte de nuevo el modal de login.
+//Creamos la cookie login por si el usuario se equivoca con el user o pass, para que al regresar al index salte de nuevo el modal de login.
 setcookie("login", "login", time()+60*60*24*365,"/");
 
 //Almacenamos los post enviados desde el form en variables
@@ -44,12 +44,16 @@ if(mysqli_num_rows($query_login) == 1)
 	
 	if($permissions == 1)
 	{
+		//Si el usuario es admin, hacemos una consulta de cuantos tickets abiertos hay
 		$query_tickets = mysqli_query($cdb, "SELECT * FROM ".$db_table4." WHERE status='1' ");
+		//Contamos los tickets abiertos y los almacenamos en una variable
 		$tickets = mysqli_num_rows($query_tickets);
+		//Creamos una cookie "tickets" con una duración de 5 segundos para que al logearse salte una ventana modal con el aviso de cuantos hay abiertos
 		setcookie("tickets", $tickets, time()+05*01*01*001,"/");
 		
 	}
-	//Volvemos al index y destruimos la cookie
+	
+	//Volvemos al index y destruimos la cookie login
 	setcookie("login", '', time()-60*60*24*365,"/");
 	header('Location: ../');
     exit;
@@ -57,7 +61,7 @@ if(mysqli_num_rows($query_login) == 1)
 } 
 else 
 {   
-	//Si los datos introducidos no son correctos, lanzamos alert con aviso.
+	//Si los datos introducidos no son correctos, lanzamos alert con aviso y volvemos al index donde se vuelve a cargar la ventana modal de login.
 
             echo '<script type="text/javascript">
 			window.alert("User o password error.");   

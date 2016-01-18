@@ -60,13 +60,14 @@ if(isset($_SESSION['user']))
        
         // Encrypt $pass variable:
         $hash2 =sha1($pass);
+        
         // Check if the old password is the one on the database:
         if($oldpass == $hash2)
         {
             // Check if the new password has been written right twice:
             if($newpassword == $newpassword2)
             {
-              // Encrypt the new password:
+              //Encrypt the new password:
               $hash = sha1($newpassword2); 
               // Check if received values aren't NULL:
               if(!empty($pass) && !empty($newpassword) && !empty($newpassword2)) 
