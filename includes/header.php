@@ -34,6 +34,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a data-toggle="modal" data-target="#myModalLogin" href="#myModalLogin"><i class="fa fa-sign-in"></i>&nbsp;Login</a></li></ul>
 			';
+		
 		}
 		// If there is a logged user, display one of the next cases according to the user permissions:
 		else
@@ -41,10 +42,10 @@
 			
 			$user = $_SESSION['user'];
 			$permissions = $_SESSION['level'];
-		
+			
 			if($permissions == 1)
 			{
-			echo '
+				echo '
 				<li '.$index.'><a href="./"><i class="fa fa-home"></i>&nbsp;Home</a></li>
 				<li '.$main.'><a href="main.php"><i class="fa fa-tasks"></i>&nbsp;Open Tickets</a><li>
 				<li '.$incidences.'><a href="incidences.php"><i class="fa fa-book"></i>&nbsp;All Incidences</a><li>
@@ -55,6 +56,7 @@
 				<li '.$users.'><a href="user.php"><i class="fa fa-user"></i>&nbsp;'.$user.'</a></li>
 				<li><a href="includes/logout.php"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
 			</ul>';	
+				
 			}
 			elseif($permissions == 2)
 			{
@@ -75,3 +77,4 @@
 		</div>	
 	</nav>
 </header>
+ 

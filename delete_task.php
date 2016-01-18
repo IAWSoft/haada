@@ -18,7 +18,7 @@ $page_title = 'delete_task';
 include ('includes/header.php'); ?>
 
 <?php	
-// We still have to code a way to ask for confirmation to delete an element.
+
 	require ('includes/config.php');
 
 // Session control:

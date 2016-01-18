@@ -1,11 +1,17 @@
+ <script src="../js/jquery.js"></script>
+ <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+ 
 <?php
 
 session_start();
 include("config.php");
+//Creamos una cookie por si el usuario se equivoca con el user o pass, al regresar al index salte de nuevo el modal de login.
+setcookie("login", "login", time()+60*60*24*365,"/");
 
 //Almacenamos los post enviados desde el form en variables
 $user = mysqli_real_escape_string($cdb, $_POST['userName']);
 $password = mysqli_real_escape_string($cdb, $_POST['userPassword']);
+
 //encriptamos la contraseña
 $hash = sha1($password); 
 
@@ -18,6 +24,7 @@ if(mysqli_num_rows($query_login) == 1)
 {
 	
 	$row = mysqli_fetch_assoc($query_login);
+	
 	//creamos las variables con los datos de la tabla
 	$email = $row['email'];
 	$user = $row['userName'];
@@ -33,7 +40,17 @@ if(mysqli_num_rows($query_login) == 1)
 	$_SESSION['level'] = $permissions;
 	$_SESSION['pass'] = $password;
 	$_SESSION['userId'] = $userId;
-	//Volvemos al index
+	
+	
+	if($permissions == 1)
+	{
+		$query_tickets = mysqli_query($cdb, "SELECT * FROM ".$db_table4." WHERE status='1' ");
+		$tickets = mysqli_num_rows($query_tickets);
+		setcookie("tickets", $tickets, time()+05*01*01*001,"/");
+		
+	}
+	//Volvemos al index y destruimos la cookie
+	setcookie("login", '', time()-60*60*24*365,"/");
 	header('Location: ../');
     exit;
 
@@ -41,10 +58,15 @@ if(mysqli_num_rows($query_login) == 1)
 else 
 {   
 	//Si los datos introducidos no son correctos, lanzamos alert con aviso.
-    echo '<script type="text/javascript">
-    alert("Incorrect username or password.");
-        window.location.href = "javascript:window.history.back();";
-        </script>';
+
+            echo '<script type="text/javascript">
+			window.alert("User o password error.");   
+    		$("document").ready(function(){
+    		history.back();
+    		});
+			</script>';
+
+		
 }
 
 

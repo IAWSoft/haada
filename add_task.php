@@ -1,3 +1,7 @@
+<!-- 	Albert Morlà Ferrer
+		Date: 16-01-16
+		Assignment: Add Task. 
+-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,7 +47,7 @@
 														<div class="col-xs-9">
 															<select class="form-control" name="category">';
 						
-															require("includes/config.php");
+															/*Esto no tiene que ir aqui, no?*/require("includes/config.php");
 															// This is going to print the options for the different categories:
 															$q = "SELECT categoryId,categoryName from category";
 															$r = mysqli_query($cdb, $q);
@@ -57,13 +61,13 @@
 													</div>
 												</div>
 												 <div class="form-group">
-                                                    <label class="control-label col-xs-2">Description :</label>
+                                                    <label class="control-label col-xs-2">Description:</label>
                                                         <div class="col-xs-9">
                                                             <textarea type="text" class="form-control" name="description">'.$row['information'].'</textarea>
                                                         </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-xs-2">Department :</label>
+                                                    <label class="control-label col-xs-2">Department:</label>
                                                         <div class="col-xs-9">
 															<select class="form-control" name="department">';
 																// This is going to print the options for the different departments:
@@ -146,7 +150,10 @@
 					// Checks if everything went ok registering the data:
 					if ($r)
 					{
-						echo '<h3>Okay!</h3><p>You have registered the task!</p>';
+						echo '<script type="text/javascript">
+	                    alert("Okay! You have registered the task!");
+	                    window.location.href ="./";
+	                    </script>';
 					}
 					else
 					{

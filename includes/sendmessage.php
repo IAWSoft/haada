@@ -10,7 +10,7 @@ $message = $_POST["message"];
 
 $subject = $_POST["subject"];
 
-$for = "info@haada.com";
+$for = "drossan@hotmail.es";
  
  
  $mensaje = "

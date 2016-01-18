@@ -56,9 +56,9 @@ if(isset($_SESSION['user']))
                                                         </div>
                                                 </div>        
                                                 <div class="form-group">
-                                                    <label class="control-label col-xs-2">Start Date:</label>
+                                                    <label class="control-label col-xs-2">Start Date: </label>
                                                       <div class="col-xs-9">
-                                                               <input type="date" class="form-control" placeholder="AAAA-MM-DD"  name="startDate">
+                                                               <input type="date" class="form-control" placeholder="AAAA-MM-DD"  value="'.$row['startDate'].'" name="startDate">
                                                         </div>
                                                 </div>
                                                 <div class="form-group">
@@ -68,25 +68,13 @@ if(isset($_SESSION['user']))
                                                         </div>
                                                 </div>
                                                <div class="form-group">           
-                                                    <label class="control-label col-xs-2">Status:</label>
-                                                        <div class="col-xs-9">
-                                                            <select class="form-control" name="status">
-                                                                    <option value="'.$row['status'].'" selected>'.$row['statusName'].'</option>';
-                                                                    $query_status = mysqli_query($cdb, "SELECT * FROM ".$db_table3." ORDER BY statusId asc");
-                                                                    while($row2 = mysqli_fetch_assoc($query_status))
-                                                                    {
-                                                                        echo ' <option value="'.$row2['statusId'].'">'.$row2['statusName'].'</option>';
-                                                                    } 
-                                                        echo'
-                                                            </select>
-                                                        </div>
-                                                </div>  
+ 
                                                 <div class="form-group">           
                                                     <label class="control-label col-xs-2">Category:</label>
                                                         <div class="col-xs-9">
                                                             <select class="form-control" name="category">
                                                                  <option value="'.$row['categoryId'].'">'.$row['categoryName'].'</option>';
-                                                                    $query_category = mysqli_query($cdb, "SELECT * FROM ".$db_table1." ORDER BY categoryId asc");
+                                                                    $query_category = mysqli_query($cdb, "SELECT * FROM ".$db_table1."  where categoryName not like '".$row['categoryName']."' ORDER BY categoryId asc");
                                                                     while($row1 = mysqli_fetch_assoc($query_category))
                                                                     {
                                                                         echo ' <option value="'.$row1['categoryId'].'">'.$row1['categoryName'].'</option>';
@@ -98,7 +86,8 @@ if(isset($_SESSION['user']))
                                                 <div class="form-group">
                                                     <label class="control-label col-xs-2">Description:</label>
                                                         <div class="col-xs-9">
-                                                             <label class="control-label" name="description">'.$row['description'].'</label>
+                                                             
+                                                              <b><textarea type="text" disable="true" class="form-control" name="description">'.$row['description'].'</textarea></b>
                                                         </div>
                                                 </div>
                                                  <div class="form-group">
@@ -118,7 +107,7 @@ if(isset($_SESSION['user']))
                                                         <div class="col-xs-9">
                                                             <select class="form-control" name="department">
                                                                  <option value="'.$row['department'].'">'.$row['departmentName'].'</option>';
-                                                                    $query_depart = mysqli_query($cdb, "SELECT * FROM ".$db_table2." ");
+                                                                    $query_depart = mysqli_query($cdb, "SELECT * FROM ".$db_table2." where departmentName not like '".$row['departmentName']."' ORDER BY departmentId asc" );
                                                                     while($row0 = mysqli_fetch_assoc($query_depart))
                                                                     {
                                                                         echo ' <option value="'.$row0['departmentId'].'">'.$row0['departmentName'].'</option>';
@@ -146,7 +135,7 @@ if(isset($_SESSION['user']))
                         </section>';
         }
         // If the "add" button has been pressed, execute the following code.
-        if(isset($_POST['submit'])) 
+        if(isset($_POST['Submit'])) 
         {
             include("includes/config.php");
             $taskId = $_GET['task'];
@@ -157,24 +146,34 @@ if(isset($_SESSION['user']))
             $information = $_POST['information'];
             $department = $_POST['department'];
             
-            $query_update = mysqli_query($cdb, "UPDATE ".$db_table4." SET  startDate='".$startDate."', finishDate='".$finishDate."', status='".$status."', categoryId='".$category."', information='".$information."', department='".$department."' WHERE tasks.taskId = '".$taskId."' ");
-    
-            if($query_update)
+           
+            if($finishDate == "")
             {
-                // If the introduced information is correct, show a message using an alert:
-                echo '<script type="text/javascript">
-                alert("Task update");
-                window.location.href ="main.php";
-                </script>';
+                $query_update = mysqli_query($cdb, "UPDATE ".$db_table4." SET  startDate='".$startDate."', status='1', finishDate='0000-00-00', categoryId='".$category."', 
+                information='".$information."', department='".$department."' WHERE tasks.taskId = '".$taskId."' ");
             }
             else
             {
-                // If the introduced information isn't correct, show a message using an alert:
-                echo '<script type="text/javascript">
-                alert("Task update: ERROR");
-                window.location.href ="javascript:window.history.back();";
-                </script>';
-            }    
+                $query_update = mysqli_query($cdb, "UPDATE ".$db_table4." SET  startDate='".$startDate."', finishDate='".$finishDate."', status='2', categoryId='".$category."', 
+                information='".$information."', department='".$department."' WHERE tasks.taskId = '".$taskId."' ");
+            }
+                if($query_update)
+                {
+                    // If the introduced information is correct, show a message using an alert:
+                    echo '<script type="text/javascript">
+                    alert("Task update");
+                    window.location.href ="main.php";
+                    </script>';
+                    
+                }
+                else
+                {
+                    // If the introduced information isn't correct, show a message using an alert:
+                    echo '<script type="text/javascript">
+                    alert("Task update: ERROR");
+                    window.location.href ="javascript:window.history.back();";
+                    </script>';
+                }    
         }
 	}
 	// If the logged user isn't level 1, return to index.
