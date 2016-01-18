@@ -30,7 +30,8 @@ th {
   	font-weight: bold;
 	padding: 10px 15px;
 	position: relative;
-	text-shadow: 0 1px 0 #000;	
+	text-shadow: 0 1px 0 #000;
+	max-width: 350px;
 }
 
 th:after {
@@ -62,6 +63,7 @@ td {
 	padding: 10px 15px;
 	position: relative;
 	transition: all 300ms;
+	max-width: 350px;
 }
 
 td:first-child {
@@ -101,6 +103,7 @@ tbody:hover td {
 tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
+	background-color: #ddd;
 }
 
 #option {
@@ -109,4 +112,7 @@ tbody:hover tr:hover td {
 
 #optionCell {
 	width: 100px;
+}
+.date{
+	min-width: 100px;
 }

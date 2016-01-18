@@ -18,7 +18,14 @@
   ?> 
 
   <?php
-  if(isset($_SESSION['user'])){
+  if(isset($_SESSION['user']))
+  {
+    
+     $permissions = $_SESSION['level'];
+	    // If user has root permission:
+    if($permissions == 1)
+    {
+
           $query_task = mysqli_query($cdb, "SELECT t.taskId, t.taskName, t.creationDate, t.status, t.categoryId, t.department, t.startDate, t.finishDate, s.statusName, c.categoryName,t.description, t.information, u.userName, d.departmentName
                         from ((((tasks as t inner join category as c 
                         on t.categoryId = c.categoryId)
@@ -35,7 +42,7 @@
                   <thead>
                     <tr>
                     <th>Name</th>
-                    <th>Creation Date</th>
+                    <th class="date">Creation Date</th>
                     <th>Finish Date</th>
                     <th>Status</th>
                     <th>Category</th>
@@ -51,7 +58,7 @@
           {
               echo' <tr>
                         <td>'.$row["taskName"].'</td>
-                        <td>'.$row["creationDate"].'</td>
+                        <td class="date">'.$row["creationDate"].'</td>
                         <td>'.$row["finishDate"].'</td>
                         <td>'.$row["statusName"].'</td>
                         <td>'.$row["categoryName"].'</td>
@@ -65,7 +72,14 @@
                     '; 
           }
           echo '</table>';
-  }else{
+    }
+    else
+    {
+    	header("location: ./");
+    }      
+  }
+  else
+  {
     echo '<script type="text/javascript">
               alert("You do not have permission to view this page.");
           </script>';

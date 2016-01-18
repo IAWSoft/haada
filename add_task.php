@@ -63,7 +63,7 @@
 												 <div class="form-group">
                                                     <label class="control-label col-xs-2">Description:</label>
                                                         <div class="col-xs-9">
-                                                            <textarea type="text" class="form-control" name="description">'.$row['information'].'</textarea>
+                                                            <textarea maxlength="200" type="text" class="form-control" name="description">'.$row['information'].'</textarea>
                                                         </div>
                                                 </div>
                                                 <div class="form-group">

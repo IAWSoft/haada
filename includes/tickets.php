@@ -17,7 +17,7 @@
 			      <div class="modal-body">
 				     <div class="row center">
 					<section class="posts col-md-12"> 
-						<form action="includes/login.php" method="post" class="form-horizontal"> 
+						<form action="" method="post" class="form-horizontal"> 
 							<fieldset class="size2 text-center">
 							    <div >
 		         					   <h3>You have '.$_COOKIE['tickets'].' tickets pending </h3> 
