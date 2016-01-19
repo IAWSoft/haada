@@ -33,7 +33,7 @@
 						<form action="" method="post" class="form-horizontal"> 
 							<fieldset class="size2 text-center">
 							    <div >
-		         					   <h3> Are you sure </h3> 
+		         					   <h3> Are you sure? </h3> 
 		         					   <br/>
 								<a href="main.php" class="btn btn-primary">No</a>
 					             <input type="submit" class="btn btn-danger" value="Yes, delete" name="Submit">

@@ -161,7 +161,7 @@ if(isset($_SESSION['user']))
                 {
                     // If the introduced information is correct, show a message using an alert:
                     echo '<script type="text/javascript">
-                    alert("Task update");
+                    alert("Task updated.");
                     window.location.href ="main.php";
                     </script>';
                     
